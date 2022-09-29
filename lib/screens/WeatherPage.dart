@@ -1,10 +1,10 @@
 
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:provider/provider.dart';
 import 'package:weather_app/WeatherData.dart';
 import 'package:weather_app/WeatherModel.dart';
+import 'package:weather_app/screens/FutureWeatherPage.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/constants.dart';
@@ -74,7 +74,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       const Spacer(),
                       IconButton(
                           onPressed: () {
-                            log('${snapshot.data!.images}');
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const FutureWeatherPage()));
                           },
                           icon: const Icon(
                             Icons.date_range,

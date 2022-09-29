@@ -7,7 +7,9 @@ import 'package:weather_app/WeatherModel.dart';
 
 
 class WeatherData with ChangeNotifier{
-  
+
+  //https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+
   late WeatherModel weatherModel;
 
   static const url = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=6f3bdd437289ce8ad6496faf1c70a590&units=imperial';
@@ -23,6 +25,8 @@ class WeatherData with ChangeNotifier{
      }
 
    }
+
+
   @override
   notifyListeners();
 }

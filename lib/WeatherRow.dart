@@ -18,3 +18,4 @@ buildWeatherRow(){
   }
   return _tableRow;
 }
+

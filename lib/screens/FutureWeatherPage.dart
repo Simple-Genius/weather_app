@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:weather_app/WeatherData.dart';
 import 'package:weather_app/WeatherModel.dart';
 import 'package:weather_app/constants.dart';
+import 'package:weather_app/screens/WeatherPage.dart';
 import '../WeatherRow.dart';
 
 
@@ -35,7 +36,6 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
       body: FutureBuilder<WeatherModel>(
         future: futureWeather,
         builder: (context,snapshot) {
-
           if(snapshot.hasData){
             return Container(
               color: kFuturePageColor,
@@ -46,9 +46,14 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
                   children: [
                     Row(
                       children: [
-                        const Icon(
+                        IconButton(
+                          icon: const Icon(
                           Icons.keyboard_backspace,
                           color: Colors.white,
+                        ),
+                            onPressed: (){
+                            Navigator.of(context).pop();
+                            }
                         ),
                         Expanded(
                           child: Center(
