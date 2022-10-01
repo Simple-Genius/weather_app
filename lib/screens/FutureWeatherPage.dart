@@ -1,13 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/WeatherData.dart';
 import 'package:weather_app/WeatherModel.dart';
 import 'package:weather_app/constants.dart';
-import 'package:weather_app/screens/WeatherPage.dart';
 import '../WeatherRow.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 
 class FutureWeatherPage extends StatefulWidget {
@@ -23,6 +22,8 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
   late Future<WeatherModel> futureWeather;
 
 
+
+
   @override
   void initState()  {
     // TODO: implement initState
@@ -30,12 +31,26 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
     futureWeather = context.read<WeatherData>().fetchData();
   }
 
+
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
       body: FutureBuilder<WeatherModel>(
         future: futureWeather,
         builder: (context,snapshot) {
+
+          List<TableRow> buildRows(){
+            List<TableRow> tableList = [];
+              for (int i = 0; i < 6; i++){
+                tableList.add(buildWeatherRow('', 45.0, 45.0, snapshot.data!.iconUrl));
+              }
+            log('${tableList.length}');
+            return tableList;
+          }
+
           if(snapshot.hasData){
             return Container(
               color: kFuturePageColor,
@@ -121,7 +136,7 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
                             0: FixedColumnWidth(150),
                             2: FixedColumnWidth(30)
                           },
-                          children: buildWeatherRow()
+                          children: buildRows(),
                       ),
                     )
                   ],
@@ -130,13 +145,14 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
             );
           }
           return  Container(color: kFuturePageColor,child: const Center(child: CircularProgressIndicator( color: Colors.white,)));
-
-
         }
       )
+
     );
   }
-  }
+
+
+}
 
 
 

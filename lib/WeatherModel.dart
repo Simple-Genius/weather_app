@@ -41,11 +41,13 @@ class WeatherModel{
     i += 8;
   }
 
-  for (int i = 2; i < 34; i++){
+  for (int i = 0; i < 39; i++){
     weeklyTemperature.add(json['list'][i]['main']['temp']);
     feelsLike.add(json['list'][i]['main']['feels_like']);
     i += 8;
   }
+  weeklyTemperature.add(json['list'][39]['main']['temp']);
+  feelsLike.add(json['list'][39]['main']['temp']);
 
     return WeatherModel(
       currentTemperature: json['list'][0]['main']['temp'],
