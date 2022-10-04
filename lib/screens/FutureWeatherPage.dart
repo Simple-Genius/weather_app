@@ -1,12 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/WeatherData.dart';
 import 'package:weather_app/WeatherModel.dart';
 import 'package:weather_app/constants.dart';
 import '../WeatherRow.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 
 class FutureWeatherPage extends StatefulWidget {
@@ -22,10 +22,12 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
   late Future<WeatherModel> futureWeather;
 
 
-
+  var dateFormate = DateFormat("dd-MM-yyyy").format(DateTime.parse("2019-09-30"));
 
   @override
   void initState()  {
+    //log(dateFormate);
+   log((DateFormat('EEEE').format(DateTime.parse("2022-10-04")).toString()));
     // TODO: implement initState
     super.initState();
     futureWeather = context.read<WeatherData>().fetchData();
@@ -44,10 +46,14 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
 
           List<TableRow> buildRows(){
             List<TableRow> tableList = [];
-              for (int i = 0; i < 6; i++){
-                tableList.add(buildWeatherRow('', 45.0, 45.0, snapshot.data!.iconUrl));
+              for (int i = 0; i < snapshot.data!.dates.length; i++){
+                tableList.add(buildWeatherRow(
+                    snapshot.data!.dates[i],
+                    snapshot.data!.futureTemperatureList[i].ceil().toString(),
+                    snapshot.data!.futureFeelsLikeList[i].ceil().toString(),
+                    snapshot.data!.images[i]));
               }
-            log('${tableList.length}');
+              log('${tableList.length}  ${snapshot.data!.futureTemperatureList.length}');
             return tableList;
           }
 

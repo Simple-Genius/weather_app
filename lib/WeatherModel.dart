@@ -1,5 +1,3 @@
-import 'constants.dart';
-
 class WeatherModel{
   late final double currentTemperature;
   final double windSpeed;
@@ -41,10 +39,10 @@ class WeatherModel{
     i += 8;
   }
 
-  for (int i = 0; i < 39; i++){
+  for (int i = 0; i < 40; i++){
     weeklyTemperature.add(json['list'][i]['main']['temp']);
     feelsLike.add(json['list'][i]['main']['feels_like']);
-    i += 8;
+    i += 6;
   }
   weeklyTemperature.add(json['list'][39]['main']['temp']);
   feelsLike.add(json['list'][39]['main']['temp']);

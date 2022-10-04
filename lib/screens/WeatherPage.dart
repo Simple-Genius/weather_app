@@ -8,7 +8,6 @@ import 'package:weather_app/screens/FutureWeatherPage.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/constants.dart';
-import 'package:line_icons/line_icons.dart';
 
 
 import '../WeatherCard.dart';
@@ -21,11 +20,7 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-
   late Future<WeatherModel> weatherModel;
-
-
-
 
   @override
   void initState() {
@@ -38,10 +33,6 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
-
     return Scaffold(
       body: FutureBuilder<WeatherModel>(
         future: weatherModel,

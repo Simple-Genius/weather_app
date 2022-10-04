@@ -3,7 +3,6 @@ import 'package:weather_app/screens/WeatherPage.dart';
 import 'package:provider/provider.dart';
 
 import 'WeatherData.dart';
-import 'screens/FutureWeatherPage.dart';
 
 void main() {
   runApp(
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FutureWeatherPage(),
+      home: const WeatherPage(),
     );
   }
 }
