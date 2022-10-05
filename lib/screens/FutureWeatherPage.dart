@@ -22,12 +22,8 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
   late Future<WeatherModel> futureWeather;
 
 
-  var dateFormate = DateFormat("dd-MM-yyyy").format(DateTime.parse("2019-09-30"));
-
   @override
   void initState()  {
-    //log(dateFormate);
-   log((DateFormat('EEEE').format(DateTime.parse("2022-10-04")).toString()));
     // TODO: implement initState
     super.initState();
     futureWeather = context.read<WeatherData>().fetchData();
@@ -74,7 +70,7 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
                         ),
                             onPressed: (){
                             Navigator.of(context).pop();
-                            }
+                          }
                         ),
                         Expanded(
                           child: Center(

@@ -32,14 +32,18 @@ class WeatherModel{
     List<double> weeklyTemperature = [];
     List<double> feelsLike = [];
 
-  for(int i = 0; i < 3*8; i++){
+  for(int i = 0; i < 40; i++){
     dateList.add(json['list'][i]['dt_txt']);
     futureTemperature.add(json['list'][i]['main']['temp']);
     images.add("http://openweathermap.org/img/w/" + json['list'][i]['weather'][0]['icon'] + '.png');
     i += 8;
   }
+   dateList.add(json['list'][39]['dt_txt']);
+   futureTemperature.add(json['list'][39]['main']['temp']);
+   images.add("http://openweathermap.org/img/w/" + json['list'][39]['weather'][0]['icon'] + '.png');
 
-  for (int i = 0; i < 40; i++){
+
+    for (int i = 0; i < 40; i++){
     weeklyTemperature.add(json['list'][i]['main']['temp']);
     feelsLike.add(json['list'][i]['main']['feels_like']);
     i += 6;
