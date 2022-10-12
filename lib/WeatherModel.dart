@@ -46,7 +46,7 @@ class WeatherModel{
     for (int i = 0; i < 40; i++){
     weeklyTemperature.add(json['list'][i]['main']['temp']);
     feelsLike.add(json['list'][i]['main']['feels_like']);
-    i += 6;
+    i += 8;
   }
   weeklyTemperature.add(json['list'][39]['main']['temp']);
   feelsLike.add(json['list'][39]['main']['temp']);

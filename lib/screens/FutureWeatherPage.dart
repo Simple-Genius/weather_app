@@ -10,6 +10,8 @@ import '../WeatherRow.dart';
 
 
 class FutureWeatherPage extends StatefulWidget {
+
+
   const FutureWeatherPage({Key? key}) : super(key: key);
 
   @override
@@ -17,8 +19,9 @@ class FutureWeatherPage extends StatefulWidget {
 }
 
 class _FutureWeatherPageState extends State<FutureWeatherPage> {
-  String _dropDownValue = 'Canada';
-  List<String> items = ['Canada', 'Kenya', 'Australia', 'Malawi'];
+  static String? _dropDownValue = 'Paris';
+  List<String> items = ['Accra', 'Abuja', 'Paris', 'Washington', 'Ottawa', 'Pretoria', 'Sofia', 'Moscow'];
+
   late Future<WeatherModel> futureWeather;
 
 
@@ -49,7 +52,6 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
                     snapshot.data!.futureFeelsLikeList[i].ceil().toString(),
                     snapshot.data!.images[i]));
               }
-              log('${tableList.length}  ${snapshot.data!.futureTemperatureList.length}');
             return tableList;
           }
 
@@ -92,7 +94,9 @@ class _FutureWeatherPageState extends State<FutureWeatherPage> {
                                 }).toList(),
                                 onChanged: (value) {
                                   setState(() {
-                                    _dropDownValue = value!;
+                                    _dropDownValue = value;
+                                    WeatherData.cityName = value!;
+                                    log(WeatherData.cityName);
                                   });
                                 },
                               ),

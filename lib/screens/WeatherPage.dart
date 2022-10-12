@@ -40,7 +40,7 @@ class _WeatherPageState extends State<WeatherPage> {
           if(snapshot.hasError){
             log(snapshot.error.toString());
           }
-          if(snapshot.hasData) {
+          if(snapshot.hasData){
             return Container(
               padding: const EdgeInsets.only(
                 top: 20.0,
@@ -58,8 +58,8 @@ class _WeatherPageState extends State<WeatherPage> {
                           color: kTextColor,
                         ),
                       ),
-                      const Text(
-                        'San Francisco',
+                      Text(
+                        WeatherData.cityName,
                         style: TextStyle(color: kTextColor, fontSize: 17),
                       ),
                       const Spacer(),
