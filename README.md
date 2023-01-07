@@ -1,2 +1,2 @@
-# my-weather-app
-Flutter app built with provider 
+# weather_app
+Flutter weather app built with provider 
